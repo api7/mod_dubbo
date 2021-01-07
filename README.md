@@ -1,3 +1,5 @@
+This project is exacted from [tengine](https://github.com/alibaba/tengine/tree/master/modules/mod_dubbo) since tengine-2.3.2.
+
 # Quick Start
 
 ## Install Tengine
