@@ -130,7 +130,7 @@ http {
 /usr/local/nginx/sbin/nginx
 ```
 
-Other Commond (no need execute usual)
+Other Command (no need execute usual)
 ```
 #restart
 /usr/local/nginx/sbin/nginx -s reload
