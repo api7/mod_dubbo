@@ -43,7 +43,6 @@ int ngx_dubbo_is_big_endian() {
 }
 
 static const u_char DUBBO_VERSION_ENCODE[] = { 0x05, 0x32, 0x2e, 0x30, 0x2e, 0x32 };            //0x05"2.0.2"
-static const u_char DUBBO_SERVICE_VERSION_ENCODE[] = { 0x05, 0x30, 0x2e, 0x30, 0x2e, 0x30 };   //0x05"0.0.0"
 
 static const u_char DUBBO_NULL[] = { 0x4e };                                                    //"N" null
 static const u_char DUBBO_FLAG_REQ_HESSIAN2 = 0xc2;                                             // 0b11000010  req & hessian2
@@ -207,8 +206,8 @@ ngx_dubbo_encode_request(ngx_dubbo_connection_t *dubbo_c, ngx_str_t *service_nam
     b->last += service_name_encode.len;
 
     //service version
-    memcpy(b->last, DUBBO_SERVICE_VERSION_ENCODE, sizeof(DUBBO_VERSION_ENCODE));
-    b->last += sizeof(DUBBO_SERVICE_VERSION_ENCODE);
+    memcpy(b->last, service_version_encode.data, service_version_encode.len);
+    b->last += service_version_encode.len;
 
     //method name
     memcpy(b->last, method_name_encode.data, method_name_encode.len);
